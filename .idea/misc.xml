@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/rectangle.xml" value="0.145" />
+        <entry key="app/src/main/res/drawable/rounded_rectangle.xml" value="0.149" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
         <entry key="app/src/main/res/layout/login_activity.xml" value="0.25" />
       </map>

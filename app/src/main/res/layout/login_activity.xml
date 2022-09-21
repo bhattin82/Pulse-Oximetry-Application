@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <Button
-        android:id="@+id/loginbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="619dp" />
-
     <TextView
         android:id="@+id/signin"
         android:layout_width="wrap_content"
@@ -22,7 +14,8 @@
         android:textColor="#2568A7"
         android:textSize="60sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="112dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="72dp" />
 
     <EditText
@@ -32,7 +25,8 @@
         android:background="@drawable/rectangle"
         android:hint="@string/Username"
         android:paddingLeft="10dp"
-        tools:layout_editor_absoluteX="89dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="265dp" />
 
     <EditText
@@ -42,7 +36,22 @@
         android:background="@drawable/rectangle"
         android:hint="@string/Password"
         android:paddingLeft="10dp"
-        tools:layout_editor_absoluteX="89dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="425dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle"
+        android:text="Login"
+        android:textSize="20dp"
+        app:backgroundTint="#2568A7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="580dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
