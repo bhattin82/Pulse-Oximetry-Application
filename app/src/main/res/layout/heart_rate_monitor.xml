@@ -4,25 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D41E12"
     tools:context=".HeartRateMonitor">
 
     <TextView
         android:id="@+id/heartratemonitortext"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:text="Heart Rate"
         android:textColor="@color/black"
-        android:textSize="40dp"
+        android:textSize="45dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.689"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/safetythreshold"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:background="#D3D5D8"
@@ -30,17 +31,19 @@
         android:text="Safety Threshold: 60 - 110 bpm"
         android:textColor="#508325"
         android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:background="@drawable/heartreading"
+        android:background="@drawable/heartratemonitor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -48,6 +51,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.237" />
 
+    <TextView
+        android:id="@+id/heartratereading"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:background="#D3D5D8"
+        android:gravity="center"
+        android:text="Heart Rate Reading: 130 bpm"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
+
+    <TextView
+        android:id="@+id/unsafetext"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+
+        android:gravity="center"
+        android:text="Unsafe"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
