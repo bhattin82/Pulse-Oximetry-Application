@@ -14,10 +14,13 @@
         android:theme="@style/Theme.PulseOximetryApplication"
         tools:targetApi="31">
         <activity
+            android:name=".ModeSelection"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ModeSelection"
+            android:name=".PanicButton"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
