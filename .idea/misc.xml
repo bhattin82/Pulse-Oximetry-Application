@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/rectangle.xml" value="0.145" />
         <entry key="app/src/main/res/drawable/rounded_rectangle.xml" value="0.149" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.14175724637681159" />
+        <entry key="app/src/main/res/layout/heart_rate_monitor.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/login_activity.xml" value="0.165" />
         <entry key="app/src/main/res/layout/mode_selection.xml" value="0.25" />
         <entry key="app/src/main/res/layout/panic_button.xml" value="0.23333333333333334" />
