@@ -52,6 +52,7 @@
         android:layout_height="60dp"
         android:background="@drawable/rounded_rectangle"
         android:hint="@string/Password"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
