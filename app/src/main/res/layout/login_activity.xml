@@ -67,6 +67,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_rectangle"
         android:text="Login"
+        android:onClick="CheckCredentials"
         android:textSize="20dp"
         app:backgroundTint="#2A5605"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,4 +79,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
