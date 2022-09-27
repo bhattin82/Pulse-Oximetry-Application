@@ -8,3 +8,6 @@ Lastly, this project uses Android Studio as its IDE.
 
 
 ![BlockDiagram](https://user-images.githubusercontent.com/70234008/192476162-cf210c5d-4390-44b8-95a5-a060190501e1.jpeg)
+
+![ActivityDiagram](https://user-images.githubusercontent.com/70234008/192551298-ef08ebf0-98d3-487a-94ff-bdeb539c2855.jpeg)
+
