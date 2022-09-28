@@ -7,6 +7,7 @@
     android:background="#D41E12"
     tools:context=".PanicButton">
 
+    <!-- Writes the "Panic Button Pressed" text on the User Interface-->
     <TextView
         android:id="@+id/panicbuttontext"
         android:layout_width="300dp"
@@ -20,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Displays the warning image on the User Interface -->
     <ImageView
         android:id="@+id/dangerimage"
         android:layout_width="100dp"
@@ -32,6 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.128" />
 
+    <!-- Displays the emergency image on the User Interface -->
     <ImageView
         android:id="@+id/emergencyimage"
         android:layout_width="100dp"

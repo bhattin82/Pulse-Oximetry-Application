@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ModeSelection">
 
+    <!-- Writes the "Mode Selection" text on the User Interface -->
     <TextView
         android:id="@+id/modeselectiontext"
         android:layout_width="300dp"
@@ -21,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.085" />
 
+    <!-- Writes the "Heart Rate" text on the User Interface -->
     <TextView
         android:id="@+id/heartratetext"
         android:layout_width="160dp"
@@ -35,6 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.483" />
 
+    <!-- Writes the "Blood Oxygen Level" text on the User Interface -->
     <TextView
         android:id="@+id/bloodoxygenleveltext"
         android:layout_width="270dp"
@@ -49,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.846" />
 
+    <!-- Creates an image button for the heart rate mode -->
     <ImageButton
         android:id="@+id/heartrateimage"
         android:layout_width="160dp"
@@ -64,6 +68,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.292" />
 
+    <!-- Creates an image button for the blood oxygen level mode -->
     <ImageButton
         android:id="@+id/bloodoxygenimage"
         android:layout_width="160dp"

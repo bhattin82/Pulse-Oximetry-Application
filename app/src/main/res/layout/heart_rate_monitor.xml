@@ -7,6 +7,7 @@
     android:background="#D41E12"
     tools:context=".HeartRateMonitor">
 
+    <!-- Writes the "Heart Rate" text on the User Interface -->
     <TextView
         android:id="@+id/heartratemonitortext"
         android:layout_width="250dp"
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07" />
 
+    <!-- Writes the safety threshold range on the User Interface -->
     <TextView
         android:id="@+id/safetythreshold"
         android:layout_width="350dp"
@@ -39,6 +41,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
+    <!-- Displays the heart rate monitor image on the User Interface -->
     <ImageView
         android:id="@+id/heartratemonitorimage"
         android:layout_width="120dp"
@@ -51,6 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.237" />
 
+    <!-- Writes the heart rate reading on the User Interface -->
     <TextView
         android:id="@+id/heartratereading"
         android:layout_width="350dp"
@@ -68,6 +72,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724" />
 
+    <!-- Writes the "Unsafe" text on the User Interface -->
     <TextView
         android:id="@+id/unsafetext"
         android:layout_width="150dp"

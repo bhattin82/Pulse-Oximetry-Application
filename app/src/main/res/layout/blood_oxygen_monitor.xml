@@ -7,6 +7,7 @@
     android:background="#0DB40A"
     tools:context=".BloodOxygenMonitor">
 
+    <!-- Writes the "Blood Oxygen Level" text on the User Interface -->
     <TextView
         android:id="@+id/bloodoxygenleveltext"
         android:layout_width="300dp"
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07" />
 
+    <!-- Writes the safety threshold range on the User Interface -->
     <TextView
         android:id="@+id/safetythreshold"
         android:layout_width="350dp"
@@ -39,6 +41,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
+    <!-- Displays the pulse oximeter image on the User Interface -->
     <ImageView
         android:id="@+id/pulseoximeterimage"
         android:layout_width="120dp"
@@ -51,6 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.237" />
 
+    <!-- Writes the blood oxygen level reading on the User Interface -->
     <TextView
         android:id="@+id/bloodoxygenreading"
         android:layout_width="350dp"
@@ -68,6 +72,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724" />
 
+    <!-- Writes the "Safe" text on the User Interface -->
     <TextView
         android:id="@+id/safetext"
         android:layout_width="150dp"
