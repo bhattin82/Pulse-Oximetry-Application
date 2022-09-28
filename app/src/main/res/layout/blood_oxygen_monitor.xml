@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:text="Blood Oxygen Level"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:text="Safety Threshold: 95 - 100 SpO2"
         android:textColor="#508325"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/pulseoximeterimage"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="@drawable/pulseoximeter"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.237" />
 
     <TextView
-        android:id="@+id/heartratereading"
+        android:id="@+id/bloodoxygenreading"
         android:layout_width="350dp"
         android:layout_height="70dp"
         android:background="#D3D5D8"
@@ -60,7 +60,7 @@
         android:text="Blood Oxygen Reading: 97 SpO2"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
@@ -75,7 +75,7 @@
         android:gravity="center"
         android:text="Safe"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

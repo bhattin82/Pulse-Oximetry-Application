@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        BluetoothSocket m = null;
+        /*BluetoothSocket m = null;
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         BluetoothDevice h = adapter.getRemoteDevice("18:54:CF:90:72:EF");
@@ -37,15 +37,12 @@ public class LoginActivity extends AppCompatActivity {
             System.out.println(m.isConnected());
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-
-
+        }*/
     }
 
     public void CheckCredentials(View view) {
-        TextView enteredUsername = findViewById(R.id.username);
-        TextView enteredPassword = findViewById(R.id.password);
+        TextView enteredUsername = findViewById(R.id.usernamebox);
+        TextView enteredPassword = findViewById(R.id.passwordbox);
         String correctUsername = "Stacy007";
         String correctPassword = "health";
         if ((enteredUsername.getText().toString().equals(correctUsername)) && (enteredPassword.getText().toString().equals(correctPassword))) {

@@ -8,11 +8,12 @@
     tools:context=".PanicButton">
 
     <TextView
+        android:id="@+id/panicbuttontext"
         android:layout_width="300dp"
         android:layout_height="80dp"
         android:text="Immediate Attention Required!\n\n      Panic Button Pressed!"
         android:textColor="#FFFFFF"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.594"
@@ -20,9 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/dangerimage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/danger2"
+        android:background="@drawable/danger"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -31,6 +33,7 @@
         app:layout_constraintVertical_bias="0.128" />
 
     <ImageView
+        android:id="@+id/emergencyimage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/panic"

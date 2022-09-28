@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         android:text="Heart Rate"
         android:textColor="@color/black"
-        android:textSize="45dp"
+        android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:text="Safety Threshold: 60 - 110 bpm"
         android:textColor="#508325"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/heartratemonitorimage"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="@drawable/heartratemonitor"
@@ -72,11 +72,10 @@
         android:id="@+id/unsafetext"
         android:layout_width="150dp"
         android:layout_height="70dp"
-
         android:gravity="center"
         android:text="Unsafe"
         android:textColor="@color/black"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

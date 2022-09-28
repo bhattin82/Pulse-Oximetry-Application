@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">Pulse Oximetry Application</string>
-    <string name="username">Username</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
+    <string name="app_name">PulseOximetry</string>
 </resources>
