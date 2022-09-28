@@ -12,7 +12,6 @@ public class ModeSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mode_selection);
-
     }
 
     public void HeartRateMode(View view) {

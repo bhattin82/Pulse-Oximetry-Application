@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         /*BluetoothSocket m = null;
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        BluetoothDevice h = adapter.getRemoteDevice("18:54:CF:90:72:EF");
+        BluetoothDevice esp32 = adapter.getRemoteDevice("18:54:CF:90:72:EF");
         try {
             m  = h.createRfcommSocketToServiceRecord(uuid);
             m.connect();
@@ -41,11 +41,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void CheckCredentials(View view) {
+
         TextView enteredUsername = findViewById(R.id.usernamebox);
         TextView enteredPassword = findViewById(R.id.passwordbox);
-        String correctUsername = "Stacy007";
-        String correctPassword = "health";
-        if ((enteredUsername.getText().toString().equals(correctUsername)) && (enteredPassword.getText().toString().equals(correctPassword))) {
+
+        if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
             Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             Intent selectMode = new Intent(LoginActivity.this, ModeSelection.class);
             startActivity(selectMode);
