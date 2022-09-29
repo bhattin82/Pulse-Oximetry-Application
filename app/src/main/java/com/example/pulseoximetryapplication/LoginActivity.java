@@ -1,18 +1,14 @@
 package com.example.pulseoximetryapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // This method authenticates the credentials.
     public void CheckCredentials(View view) {
 
         // Identifies relevant id in xml file
@@ -42,8 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         /* If the correct credentials are entered, a success toast pops up.
         The user is transitioned to the mode selection page.
-        The username and password fields are cleared.
-        */
+        The username and password fields are cleared. */
         if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
             Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
             Intent selectMode = new Intent(LoginActivity.this, ModeSelection.class);
@@ -59,19 +55,28 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // This method establishes a bluetooth connection with the microcontroller.
     @SuppressLint({"MissingPermission", "HardwareIds"})
     public void EstablishBluetoothConnection() throws IOException {
 
-        BluetoothSocket bluetoothSocket = null;
+        // Declare variables
+        String esp32Address = "C4:DD:57:CA:D1:46";
+        boolean connectedToMicrocontroller = false;
+        int bluetoothSuccess = 0;
+
+        // Obtain the universally unique identifier for bluetooth
+        // Obtain the data for the bluetooth hardware
         UUID uniqueIdentifier = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        BluetoothDevice esp32 = adapter.getRemoteDevice(adapter.getAddress());
-        try {
-            bluetoothSocket = esp32.createInsecureRfcommSocketToServiceRecord(uniqueIdentifier);
+        BluetoothDevice esp32Microcontroller = adapter.getRemoteDevice(esp32Address);
+
+        // Create a communication socket until bluetooth connection with esp32(microcontroller)
+        while (!connectedToMicrocontroller) {
+            BluetoothSocket  bluetoothSocket = esp32Microcontroller.createInsecureRfcommSocketToServiceRecord(uniqueIdentifier);
             bluetoothSocket.connect();
-            System.out.println(bluetoothSocket.isConnected());
-        } catch (IOException e) {
-            System.out.println(bluetoothSocket.isConnected());
+            if (bluetoothSuccess == Boolean.compare(true, bluetoothSocket.isConnected())) {
+                connectedToMicrocontroller = true;
+            }
         }
     }
 }
