@@ -13,10 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 public class LoginActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +60,12 @@ public class LoginActivity extends AppCompatActivity {
     public void EstablishBluetoothConnection() throws IOException {
 
         // Declare variables
-        String esp32Address = "C4:DD:57:CA:D1:46";
+        //String esp32Address = "C4:DD:57:CA:D1:46";
+        String esp32Address = "E8:9F:6D:25:A3:9A";
         boolean connectedToMicrocontroller = false;
         int bluetoothSuccess = 0;
+        InputStream readData = null;
+        BluetoothSocket bluetoothSocket = null;
 
         // Obtain the universally unique identifier for bluetooth
         // Obtain the data for the bluetooth hardware
@@ -72,11 +75,28 @@ public class LoginActivity extends AppCompatActivity {
 
         // Create a communication socket until bluetooth connection with esp32(microcontroller)
         while (!connectedToMicrocontroller) {
-            BluetoothSocket  bluetoothSocket = esp32Microcontroller.createInsecureRfcommSocketToServiceRecord(uniqueIdentifier);
+            bluetoothSocket = esp32Microcontroller.createRfcommSocketToServiceRecord(uniqueIdentifier);
             bluetoothSocket.connect();
             if (bluetoothSuccess == Boolean.compare(true, bluetoothSocket.isConnected())) {
                 connectedToMicrocontroller = true;
+                System.out.println(bluetoothSocket.isConnected());
             }
         }
+
+        byte[] buff = new byte[1024];
+        int bytes = 0;
+        StringBuilder sensorData = new StringBuilder();
+        readData = bluetoothSocket.getInputStream();
+
+        while (true) {
+            bytes = readData.read(buff);
+            String sensorReading = new String(buff, 0, bytes);
+            if (sensorReading.equals("/")) {
+                break;
+            }
+            sensorData.append(sensorReading);
+        }
+        int sensorInformation = Integer.parseInt(String.valueOf(sensorData));
+
     }
 }
