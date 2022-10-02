@@ -16,7 +16,10 @@ public class ModeSelection extends AppCompatActivity {
 
     // This method transitions the user to the heart rate monitor page
     public void HeartRateMode(View view) {
+        Intent heartPulse = getIntent();
+        int heartRate = heartPulse.getIntExtra("HeartRateReading", 0);
         Intent heartRateMonitor = new Intent(ModeSelection.this, HeartRateMonitor.class);
+        heartRateMonitor.putExtra("HeartRateReading", heartRate);
         startActivity(heartRateMonitor);
     }
 

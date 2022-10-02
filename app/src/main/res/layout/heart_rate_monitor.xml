@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heartrateview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D41E12"
     tools:context=".HeartRateMonitor">
 
     <!-- Writes the "Heart Rate" text on the User Interface -->
@@ -74,7 +74,7 @@
 
     <!-- Writes the "Unsafe" text on the User Interface -->
     <TextView
-        android:id="@+id/unsafetext"
+        android:id="@+id/safetytext"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:gravity="center"

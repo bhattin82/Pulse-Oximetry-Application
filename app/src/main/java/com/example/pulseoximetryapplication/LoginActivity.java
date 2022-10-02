@@ -17,6 +17,11 @@ import java.io.InputStream;
 import java.util.UUID;
 
 public class LoginActivity extends AppCompatActivity {
+
+    InputStream readData = null;
+    BluetoothSocket bluetoothSocket = null;
+    StringBuilder sensorData = new StringBuilder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // This method authenticates the credentials.
-    public void CheckCredentials(View view) {
+    public void CheckCredentials(View view) throws IOException {
 
         // Identifies relevant id in xml file
         TextView enteredUsername = findViewById(R.id.usernamebox);
@@ -42,7 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         The username and password fields are cleared. */
         if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
             Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+            int heartRate = SensorHeartRateReading();
             Intent selectMode = new Intent(LoginActivity.this, ModeSelection.class);
+            selectMode.putExtra("HeartRateReading", heartRate);
             startActivity(selectMode);
             enteredUsername.setText("");
             enteredPassword.setText("");
@@ -64,8 +71,6 @@ public class LoginActivity extends AppCompatActivity {
         String esp32Address = "E8:9F:6D:25:A3:9A";
         boolean connectedToMicrocontroller = false;
         int bluetoothSuccess = 0;
-        InputStream readData = null;
-        BluetoothSocket bluetoothSocket = null;
 
         // Obtain the universally unique identifier for bluetooth
         // Obtain the data for the bluetooth hardware
@@ -82,21 +87,20 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println(bluetoothSocket.isConnected());
             }
         }
+    }
 
-        byte[] buff = new byte[1024];
-        int bytes = 0;
-        StringBuilder sensorData = new StringBuilder();
+    public int SensorHeartRateReading() throws IOException {
+        byte[] buffer = new byte[1024];
         readData = bluetoothSocket.getInputStream();
-
         while (true) {
-            bytes = readData.read(buff);
-            String sensorReading = new String(buff, 0, bytes);
+            int bytesRead = readData.read(buffer);
+            String sensorReading = new String(buffer, 0, bytesRead);
             if (sensorReading.equals("/")) {
                 break;
             }
             sensorData.append(sensorReading);
         }
-        int sensorInformation = Integer.parseInt(String.valueOf(sensorData));
-
+        return Integer.parseInt(String.valueOf(sensorData));
     }
 }
+
