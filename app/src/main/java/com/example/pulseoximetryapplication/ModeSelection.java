@@ -25,7 +25,10 @@ public class ModeSelection extends AppCompatActivity {
 
     // This method transitions the user to the blood oxygen level monitor page
     public void BloodOxygenLevelMode(View view) {
-        Intent bloodOxygenLevelMonitor = new Intent(ModeSelection.this, BloodOxygenMonitor.class);
-        startActivity(bloodOxygenLevelMonitor);
+        Intent bloodoxygen = getIntent();
+        int bloodoxygenlevel = bloodoxygen.getIntExtra("BloodOxygenLevelReading", 0);
+        Intent bloodOxygenMonitor = new Intent(ModeSelection.this, BloodOxygenMonitor.class);
+        bloodOxygenMonitor.putExtra("BloodOxygenLevelReading", bloodoxygenlevel);
+        startActivity(bloodOxygenMonitor);
     }
 }

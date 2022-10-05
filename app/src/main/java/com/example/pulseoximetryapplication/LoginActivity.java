@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,15 +44,27 @@ public class LoginActivity extends AppCompatActivity {
         // Identifies relevant id in xml file
         TextView enteredUsername = findViewById(R.id.usernamebox);
         TextView enteredPassword = findViewById(R.id.passwordbox);
+        int modeReading = 0;
 
         /* If the correct credentials are entered, a success toast pops up.
         The user is transitioned to the mode selection page.
         The username and password fields are cleared. */
         if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
             Toast.makeText(LoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-            int heartRate = SensorHeartRateReading();
+            List<String> sensorMeasurements = SensorHeartRateReading();
             Intent selectMode = new Intent(LoginActivity.this, ModeSelection.class);
-            selectMode.putExtra("HeartRateReading", heartRate);
+
+            if (sensorMeasurements.get(0).equals("h")) {
+                modeReading = Integer.parseInt(sensorMeasurements.get(1));
+                selectMode.putExtra("HeartRateReading", modeReading);
+            }
+            else if (sensorMeasurements.get(0).equals("b")) {
+                modeReading = Integer.parseInt(sensorMeasurements.get(1));
+                selectMode.putExtra("BloodOxygenLevelReading", modeReading);
+            }
+            else if (sensorMeasurements.get(0).equals("p")) {
+                modeReading = Integer.parseInt(sensorMeasurements.get(1));
+            }
             startActivity(selectMode);
             enteredUsername.setText("");
             enteredPassword.setText("");
@@ -67,8 +82,8 @@ public class LoginActivity extends AppCompatActivity {
     public void EstablishBluetoothConnection() throws IOException {
 
         // Declare variables
-        //String esp32Address = "C4:DD:57:CA:D1:46";
-        String esp32Address = "E8:9F:6D:25:A3:9A";
+        String esp32Address = "C4:DD:57:CA:D1:46";
+        //String esp32Address = "E8:9F:6D:25:A3:9A";
         boolean connectedToMicrocontroller = false;
         int bluetoothSuccess = 0;
 
@@ -89,18 +104,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public int SensorHeartRateReading() throws IOException {
+    public List<String> SensorHeartRateReading() throws IOException {
         byte[] buffer = new byte[1024];
         readData = bluetoothSocket.getInputStream();
-        while (true) {
-            int bytesRead = readData.read(buffer);
-            String sensorReading = new String(buffer, 0, bytesRead);
-            if (sensorReading.equals("/")) {
-                break;
-            }
-            sensorData.append(sensorReading);
-        }
-        return Integer.parseInt(String.valueOf(sensorData));
+        int bytesRead = readData.read(buffer);
+        String sensorReading = new String(buffer, 0, bytesRead);
+        String[] sensorData = sensorReading.split("/");
+        return Arrays.asList(sensorData);
     }
 }
 
