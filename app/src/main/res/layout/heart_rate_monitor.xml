@@ -5,6 +5,7 @@
     android:id="@+id/heartrateview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D41E12"
     tools:context=".HeartRateMonitor">
 
     <!-- Writes the "Heart Rate" text on the User Interface -->
@@ -30,7 +31,7 @@
         android:layout_height="70dp"
         android:background="#D3D5D8"
         android:gravity="center"
-        android:text="Safety Threshold: 60 - 110 bpm"
+        android:text="Safety Threshold: 75 - 118 bpm"
         android:textColor="#508325"
         android:textSize="20sp"
         android:textStyle="bold"

@@ -25,6 +25,17 @@ public class HeartRateMonitor extends AppCompatActivity {
 
         Intent heartData = getIntent();
         int heartRate = heartData.getIntExtra("HeartRateReading", 0);
+        int battery = heartData.getIntExtra("BatteryPercentReading", 0);
+
+        // Create new method(x) in this class
+           // Add a delay for loop (singleton)
+           // Call SensorMode method after delay (after for loop in same method)
+           // filter value
+           // if filter value not equal to heart rate, update reading
+
+        // Put if logic in a new method
+
+        // Create while loop that keeps calling method(x)
 
         if ((heartRate >= lowerSafetyThreshold) && (heartRate <= upperSafetyThreshold)) {
             heartMonitorView.setBackgroundColor(Color.rgb(13,180,10));

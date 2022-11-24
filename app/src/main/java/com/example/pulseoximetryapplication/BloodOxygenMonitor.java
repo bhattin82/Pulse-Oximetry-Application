@@ -25,6 +25,7 @@ public class BloodOxygenMonitor extends AppCompatActivity {
 
         Intent bloodOxygenData = getIntent();
         int bloodOxygenLevel = bloodOxygenData.getIntExtra("BloodOxygenLevelReading", 0);
+        int battery = bloodOxygenData.getIntExtra("BatteryPercentReading", 0);
         if ((bloodOxygenLevel >= lowerSafetyThreshold) && (bloodOxygenLevel <= upperSafetyThreshold)) {
             bloodOxygenMonitorView.setBackgroundColor(Color.rgb(13,180,10));
             childSafety.setText("Safe");
@@ -33,7 +34,7 @@ public class BloodOxygenMonitor extends AppCompatActivity {
             bloodOxygenMonitorView.setBackgroundColor(Color.rgb(212,30,18));
             childSafety.setText("Unsafe");
         }
-        String bloodOxygenSensorData = String.format("Blood Oxygen Reading: %d bpm", bloodOxygenLevel);
+        String bloodOxygenSensorData = String.format("Blood Oxygen Reading: %d SpO2", bloodOxygenLevel);
         bloodOxygenMeasurement.setText(bloodOxygenSensorData);
     }
 }
