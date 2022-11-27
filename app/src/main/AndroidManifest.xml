@@ -38,7 +38,8 @@
             android:exported="true" />
         <activity
             android:name=".PanicButton"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>

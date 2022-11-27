@@ -22,6 +22,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.085" />
 
+    <TextView
+        android:id="@+id/batteryleveltext"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Loading Band Battery"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.170" />
+
     <!-- Writes the "Heart Rate" text on the User Interface -->
     <TextView
         android:id="@+id/heartratetext"

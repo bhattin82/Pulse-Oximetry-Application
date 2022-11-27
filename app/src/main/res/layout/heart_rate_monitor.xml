@@ -5,7 +5,7 @@
     android:id="@+id/heartrateview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D41E12"
+    android:background="#FFFFFF"
     tools:context=".HeartRateMonitor">
 
     <!-- Writes the "Heart Rate" text on the User Interface -->
@@ -62,7 +62,7 @@
         android:layout_height="70dp"
         android:background="#D3D5D8"
         android:gravity="center"
-        android:text="Heart Rate Reading: 130 bpm"
+        android:text="Heart Rate Reading: "
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20dp"
@@ -76,10 +76,10 @@
     <!-- Writes the "Unsafe" text on the User Interface -->
     <TextView
         android:id="@+id/safetytext"
-        android:layout_width="150dp"
+        android:layout_width="250dp"
         android:layout_height="70dp"
         android:gravity="center"
-        android:text="Unsafe"
+        android:text="Loading Data"
         android:textColor="@color/black"
         android:textSize="40sp"
         android:textStyle="bold"

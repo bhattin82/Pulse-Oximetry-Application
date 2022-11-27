@@ -5,7 +5,7 @@
     android:id ="@+id/bloodoxygenview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0DB40A"
+    android:background="#FFFFFF"
     tools:context=".BloodOxygenMonitor">
 
     <!-- Writes the "Blood Oxygen Level" text on the User Interface -->
@@ -62,7 +62,7 @@
         android:layout_height="70dp"
         android:background="#D3D5D8"
         android:gravity="center"
-        android:text="Blood Oxygen Reading: 97 SpO2"
+        android:text="Blood Oxygen Reading: "
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -76,10 +76,10 @@
     <!-- Writes the "Safe" text on the User Interface -->
     <TextView
         android:id="@+id/safetext"
-        android:layout_width="150dp"
+        android:layout_width="250dp"
         android:layout_height="70dp"
         android:gravity="center"
-        android:text="Safe"
+        android:text="Loading Data"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
