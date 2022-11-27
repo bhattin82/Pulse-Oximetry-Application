@@ -1,5 +1,9 @@
+// This creates the login activity page.
+// It also establishes bluetooth communication between the client and server.
+
 package com.example.pulseoximetryapplication;
 
+// Imports classes/packages/libraries
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -38,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     // This method authenticates the credentials.
     public void CheckCredentials(View view) {
 
-        // Identifies relevant id in xml file
+        // Identifies view with respect to the id in the xml file
         TextView enteredUsername = findViewById(R.id.usernamebox);
         TextView enteredPassword = findViewById(R.id.passwordbox);
 
@@ -63,9 +67,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    // This method tries to establish a bluetooth connection with the microcontroller and the Android application
     public void EstablishBluetoothConnection() {
 
-        // Declare variables
+        // Declare variable
         String esp32Address = "C4:DD:57:CA:D1:46";
 
         // Obtain the universally unique identifier for bluetooth

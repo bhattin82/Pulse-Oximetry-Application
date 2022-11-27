@@ -1,5 +1,9 @@
+// This creates the Mode Selection Activity.
+// It gives the option of choosing either the heart rate or blood oxygen level
+
 package com.example.pulseoximetryapplication;
 
+// Import classes/libraries/packages
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -38,6 +42,8 @@ public class ModeSelection extends AppCompatActivity {
     private BroadcastReceiver panicAndBatteryMessageReceiver  = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+
+            // The battery level for the band is obtained and displayed on the User Interface
             TextView batteryPercentage = findViewById(R.id.batteryleveltext);
             int bandBattery = intent.getIntExtra("BatteryReading",0);
             String bandBatterySensorData = "Wrist Band Battery: " + bandBattery + "%";

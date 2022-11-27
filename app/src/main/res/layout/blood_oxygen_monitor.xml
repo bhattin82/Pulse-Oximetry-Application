@@ -42,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <!-- Displays the pulse oximeter image on the User Interface -->
+    <!-- Displays the pulse oximetry image on the User Interface -->
     <ImageView
         android:id="@+id/pulseoximeterimage"
         android:layout_width="120dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724" />
 
-    <!-- Writes the "Safe" text on the User Interface -->
+    <!-- Writes the "Safe/unsafe/loading data" text on the User Interface -->
     <TextView
         android:id="@+id/safetext"
         android:layout_width="250dp"

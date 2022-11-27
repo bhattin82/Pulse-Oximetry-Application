@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.724" />
 
-    <!-- Writes the "Unsafe" text on the User Interface -->
+    <!-- Writes the "Unsafe/safe/loading data" text on the User Interface -->
     <TextView
         android:id="@+id/safetytext"
         android:layout_width="250dp"
