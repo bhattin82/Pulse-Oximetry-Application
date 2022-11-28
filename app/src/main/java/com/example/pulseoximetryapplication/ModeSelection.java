@@ -23,7 +23,8 @@ public class ModeSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mode_selection);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(panicAndBatteryMessageReceiver, new IntentFilter("VitalHealthInformation"));
+        // Register Broadcast Receiver
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(panicAndBatteryMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method transitions the user to the heart rate monitor page

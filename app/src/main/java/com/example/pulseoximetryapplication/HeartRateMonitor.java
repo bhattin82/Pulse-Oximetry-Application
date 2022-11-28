@@ -28,7 +28,8 @@ public class HeartRateMonitor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.heart_rate_monitor);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
+        // Register Broadcast Receiver
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time heart rate reading of the person wearing the band.

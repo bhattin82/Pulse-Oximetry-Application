@@ -28,7 +28,8 @@ public class BloodOxygenMonitor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_oxygen_monitor);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
+        // Register Broadcast Receiver
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time blood oxygen level reading of the person wearing the band.
