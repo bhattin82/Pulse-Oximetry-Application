@@ -22,9 +22,6 @@ public class ModeSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mode_selection);
-
-        // Register Broadcast Receiver
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(panicAndBatteryMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method transitions the user to the heart rate monitor page
@@ -37,6 +34,27 @@ public class ModeSelection extends AppCompatActivity {
     public void BloodOxygenLevelMode(View view) {
         Intent bloodOxygenMonitor = new Intent(ModeSelection.this, BloodOxygenMonitor.class);
         startActivity(bloodOxygenMonitor);
+    }
+
+    // Register broadcast receiver when activity starts
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(panicAndBatteryMessageReceiver, new IntentFilter("VitalHealthInformation"));
+    }
+
+    // Unregister broadcast receiver when activity is no longer visible
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(panicAndBatteryMessageReceiver);
+    }
+
+    // Unregister broadcast receiver when activity is destroyed by the system
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(panicAndBatteryMessageReceiver);
     }
 
     @SuppressLint("DefaultLocale")

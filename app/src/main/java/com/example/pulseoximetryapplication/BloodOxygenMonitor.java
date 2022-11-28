@@ -27,9 +27,6 @@ public class BloodOxygenMonitor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_oxygen_monitor);
-
-        // Register Broadcast Receiver
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time blood oxygen level reading of the person wearing the band.
@@ -55,6 +52,27 @@ public class BloodOxygenMonitor extends AppCompatActivity {
         // This displays the blood oxygen level measurement on the User Interface.
         String bloodOxygenSensorData = String.format("Blood Oxygen Reading: %d SpO2", bloodOxygenLevel);
         bloodOxygenMeasurement.setText(bloodOxygenSensorData);
+    }
+
+    // Register broadcast receiver when activity starts
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
+    }
+
+    // Unregister broadcast receiver when activity is no longer visible
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(bloodOxygenMessageReceiver);
+    }
+
+    // Unregister broadcast receiver when activity is destroyed by the system
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(bloodOxygenMessageReceiver);
     }
 
     private BroadcastReceiver bloodOxygenMessageReceiver = new BroadcastReceiver() {

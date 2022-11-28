@@ -27,9 +27,6 @@ public class HeartRateMonitor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.heart_rate_monitor);
-
-        // Register Broadcast Receiver
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time heart rate reading of the person wearing the band.
@@ -54,6 +51,27 @@ public class HeartRateMonitor extends AppCompatActivity {
         // This displays the heart rate measurement on the User Interface.
         String heartRateSensorData = String.format("Heart Rate Reading: %d bpm", heartRate);
         heartRateMeasurement.setText(heartRateSensorData);
+    }
+
+    // Register broadcast receiver when activity starts
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
+    }
+
+    // Unregister broadcast receiver when activity is no longer visible
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(heartRateMessageReceiver);
+    }
+
+    // Unregister broadcast receiver when activity is destroyed by the system
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(heartRateMessageReceiver);
     }
 
     private BroadcastReceiver heartRateMessageReceiver = new BroadcastReceiver() {

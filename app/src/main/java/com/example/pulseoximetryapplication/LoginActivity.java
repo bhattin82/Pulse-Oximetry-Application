@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
 
             Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
-            LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(healthInformationMessageReceiver, new IntentFilter("VitalHealthInformation"));
             Intent selectMode = new Intent(getApplicationContext(), ModeSelection.class);
             startActivity(selectMode);
 
@@ -84,6 +83,27 @@ public class LoginActivity extends AppCompatActivity {
         bluetoothThread.start();
     }
 
+    // Register broadcast receiver when activity starts
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(healthInformationMessageReceiver, new IntentFilter("VitalHealthInformation"));
+    }
+
+    // Unregister broadcast receiver when activity is no longer visible
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(healthInformationMessageReceiver);
+    }
+
+    // Unregister broadcast receiver when activity is destroyed by the system
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(healthInformationMessageReceiver);
+    }
+
     // Broadcast onReceive method runs on main (UI) thread.
     private BroadcastReceiver healthInformationMessageReceiver = new BroadcastReceiver() {
         @Override
@@ -100,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     };
+
 
     // The ConnectThread class is to create a new thread besides the main (UserInterface) thread
     private class ConnectThread extends Thread {
@@ -176,6 +197,10 @@ public class LoginActivity extends AppCompatActivity {
                     break;
                 }
             }
+        }
+
+        public void cancel() throws IOException {
+            bluetoothSocket.close();
         }
 
     }
