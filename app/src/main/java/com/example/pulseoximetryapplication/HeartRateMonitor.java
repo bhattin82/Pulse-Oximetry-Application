@@ -27,6 +27,9 @@ public class HeartRateMonitor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.heart_rate_monitor);
+
+        // Register broadcast receiver when activity starts
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time heart rate reading of the person wearing the band.
@@ -53,20 +56,6 @@ public class HeartRateMonitor extends AppCompatActivity {
         heartRateMeasurement.setText(heartRateSensorData);
     }
 
-    // Register broadcast receiver when activity starts
-    @Override
-    protected void onStart() {
-        super.onStart();
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(heartRateMessageReceiver, new IntentFilter("VitalHealthInformation"));
-    }
-
-    // Unregister broadcast receiver when activity is no longer visible
-    @Override
-    protected void onStop() {
-        super.onStop();
-        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(heartRateMessageReceiver);
-    }
-
     // Unregister broadcast receiver when activity is destroyed by the system
     @Override
     protected void onDestroy() {
@@ -78,9 +67,17 @@ public class HeartRateMonitor extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            // The heart rate (real time) value is obtained and the display method is called.
+            // Launch Panic Button Activity if panic button pressed
+            // The heart rate (real time) value is obtained and the display method is called otherwise.
             int heartRateInformation = intent.getIntExtra("HeartRateReading",0);
-            DisplayHeartReading(heartRateInformation);
+            int panicButtonPressed = intent.getIntExtra("PanicReading",0);
+            if (panicButtonPressed  == 1) {
+                Intent panicMode = new Intent(getApplicationContext(), PanicButton.class);
+                startActivity(panicMode);
+            }
+            else {
+                DisplayHeartReading(heartRateInformation);
+            }
         }
     };
 }

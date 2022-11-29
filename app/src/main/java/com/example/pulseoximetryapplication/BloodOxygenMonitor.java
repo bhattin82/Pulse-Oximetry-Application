@@ -27,6 +27,9 @@ public class BloodOxygenMonitor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_oxygen_monitor);
+
+        // Register broadcast receiver when activity starts
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // This method display the real time blood oxygen level reading of the person wearing the band.
@@ -54,20 +57,6 @@ public class BloodOxygenMonitor extends AppCompatActivity {
         bloodOxygenMeasurement.setText(bloodOxygenSensorData);
     }
 
-    // Register broadcast receiver when activity starts
-    @Override
-    protected void onStart() {
-        super.onStart();
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(bloodOxygenMessageReceiver, new IntentFilter("VitalHealthInformation"));
-    }
-
-    // Unregister broadcast receiver when activity is no longer visible
-    @Override
-    protected void onStop() {
-        super.onStop();
-        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(bloodOxygenMessageReceiver);
-    }
-
     // Unregister broadcast receiver when activity is destroyed by the system
     @Override
     protected void onDestroy() {
@@ -79,9 +68,17 @@ public class BloodOxygenMonitor extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            // The blood oxygen level (real time) value is obtained and the display method is called.
+            // Launch Panic Button Activity if panic button pressed
+            // The blood oxygen level (real time) value is obtained and the display method is called otherwise.
             int bloodOxygenInformation = intent.getIntExtra("BloodOxygenReading",0);
-            DisplayBloodOxygenReading(bloodOxygenInformation);
+            int panicButtonPressed = intent.getIntExtra("PanicReading",0);
+            if (panicButtonPressed  == 1) {
+                Intent panicMode = new Intent(getApplicationContext(), PanicButton.class);
+                startActivity(panicMode);
+            }
+            else {
+                DisplayBloodOxygenReading(bloodOxygenInformation);
+            }
         }
     };
 }

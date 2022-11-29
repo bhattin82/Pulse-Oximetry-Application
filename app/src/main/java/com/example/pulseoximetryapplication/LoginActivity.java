@@ -52,9 +52,12 @@ public class LoginActivity extends AppCompatActivity {
         if ((enteredUsername.getText().toString().equals(BuildConfig.correctUsername)) && (enteredPassword.getText().toString().equals(BuildConfig.correctPassword))) {
 
             Toast.makeText(getApplicationContext(), "Successful", Toast.LENGTH_SHORT).show();
+
+            // Register broadcast receiver when activity starts
+            LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(healthInformationMessageReceiver, new IntentFilter("VitalHealthInformation"));
+
             Intent selectMode = new Intent(getApplicationContext(), ModeSelection.class);
             startActivity(selectMode);
-
             enteredUsername.setText("");
             enteredPassword.setText("");
         }
@@ -81,13 +84,6 @@ public class LoginActivity extends AppCompatActivity {
         // A new thread is created for bluetooth and begins execution
         ConnectThread bluetoothThread = new ConnectThread(esp32Microcontroller);
         bluetoothThread.start();
-    }
-
-    // Register broadcast receiver when activity starts
-    @Override
-    protected void onStart() {
-        super.onStart();
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(healthInformationMessageReceiver, new IntentFilter("VitalHealthInformation"));
     }
 
     // Unregister broadcast receiver when activity is no longer visible
@@ -120,7 +116,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     };
-
 
     // The ConnectThread class is to create a new thread besides the main (UserInterface) thread
     private class ConnectThread extends Thread {
@@ -155,12 +150,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please check your Bluetooth Connection", Toast.LENGTH_SHORT).show();
                 }
 
-            // If connection is not successful, then close the bluetooth socket
+                // If connection is not successful, then close the bluetooth socket
             } catch (IOException connectException) {
                 try {
                     bluetoothSocket.close();
                 } catch (IOException closeException) {
-                   System.out.println("Unable to close client socket");
+                    System.out.println("Unable to close client socket");
                 }
             }
 
@@ -248,4 +243,3 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 }
-
