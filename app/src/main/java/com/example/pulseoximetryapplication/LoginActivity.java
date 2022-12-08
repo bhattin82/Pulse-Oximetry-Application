@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     public void BluetoothConnection() {
 
         // Declare variable
-        String esp32Address = "C4:DD:57:CA:D1:46";
+        String esp32Address = "CC:50:E3:BA:CF:72";
 
         // Creates a bluetooth adapter and bluetooth device object.
         // If adapter returns null, then the device does not support bluetooth.
