@@ -4,11 +4,11 @@ This project develops a wearable band that monitors the vitals of children so th
 
 The application layout consists of a login page so that parents can protect their child's privacy. Once the correct credentials **(Username: Stacy123, Password: health)** are entered, the mode selection page pops up. It displays the band battery, and it provides the option to choose either the heart rate or blood oxygen mode. When the relevant mode is selected, it displays the heart rate/blood oxygen level data in real time along with a safety threshold. If the heart rate/blood oxygen level data is beyond the safety thresholds, a green background transitions to a red background indicating a health concern. Furthermore, the application has the feature where if the child is in distress, he/she can long press a panic button on the band to notify the parents that he/she is in pain and immediate action is required. In such a case, the application redirects to a red emergency page for the panic button.
 
-The data sent by the server (esp32 microcontroller) to the client (Android Application) is in the following format: **HeartRate=67,BloodOxygen=95,BatteryPercent=92,Panic=0**
+The data sent by the server (esp32 microcontroller) to the client (Android Application) is in the following format: HeartRate=67,BloodOxygen=95,BatteryPercent=92,Panic=0
 
 This can be achieved by the following lines of code on the Arduino IDE: 
-**SerialBT.printf("HeartRate=%d,BloodOxygen=%d,BatteryPercent=%d,Panic=%d", heartRate, bloodOxygen, battery, panicButton);
-SerialBT.printf("\n");**
+SerialBT.printf("HeartRate=%d,BloodOxygen=%d,BatteryPercent=%d,Panic=%d", heartRate, bloodOxygen, battery, panicButton);
+SerialBT.printf("\n");
 
 **How was the bluetooth connection established and the data read in real time?**
 
